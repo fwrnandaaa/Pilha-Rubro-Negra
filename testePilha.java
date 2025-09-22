@@ -4,16 +4,16 @@ public class testePilha {
 	public static void main(String[] args) {	
 		//Testes pilha vermelha	
 		Integer[] b = new Integer[1];		
-		PilhaArray pp=new PilhaArray(1,0);
+		Pilha pp=new Pilha(1,0);
 		System.out.println("inserindo - Pilha vermelha");
 		for(int f=0;f<10;f++){
 		  System.out.println(f);		  
-		  pp.push(new Integer(f));
+		  pp.push_vermelho(new Integer(f));
 		}
 		System.out.println("retirando - Pilha vermelha");
 		for(int f=0;f<10;f++){
 			  System.out.print(f);
-			  System.out.println(" - "+pp.pop());
+			  System.out.println(" - "+pp.pop_vermelho());
 		}
 
 		//Testes pilha preta
