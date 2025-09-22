@@ -2,7 +2,7 @@
 public class testePilha {
 
 	public static void main(String[] args) {	
-		//Testes pilha vermelha	
+		//pilha vermelha	
 		Integer[] b = new Integer[1];		
 		Pilha pp=new Pilha(1,0);
 		System.out.println("inserindo - Pilha vermelha");
@@ -16,7 +16,7 @@ public class testePilha {
 			  System.out.println(" - "+pp.pop_vermelho());
 		}
 
-		//Testes pilha preta
+		//pilha preta
 		System.out.println("inserindo - Pilha preta");
 		for(int f=0;f<10;f++){
 		  System.out.println(f);		  

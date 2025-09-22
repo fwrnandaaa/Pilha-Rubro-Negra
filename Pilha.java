@@ -25,32 +25,41 @@ public class Pilha {
         return false;
     }
       public void aumenta_pilha(){
-        // Pilha vermelha
+        //duplica array quando as pilhas se encontrarem
         if (topoV + 1 == topoP) {
             int novaCapacidade = capacidade * 2;
             Object[] novo_array = new Object[novaCapacidade];
-            for(int i = 0; i <= topoV; i++){
+            for (int i = 0; i <= topoV; i++) {
                 novo_array[i] = a[i];
             }
-            // Pilha preta
-            int deslocamento = novaCapacidade - (capacidade - topoP);
-            for(int i = capacidade - 1; i >= topoP; i--){
-                novo_array[deslocamento + (i - topoP)] = a[i];
+            //copia pilha preta (do final)
+            int novoTopoP = novaCapacidade - (capacidade - topoP);
+            for (int i = capacidade - 1; i >= topoP; i--) {
+                novo_array[novoTopoP + (i - topoP)] = a[i];
             }
-            topoP = deslocamento;
+            topoP = novoTopoP;
             capacidade = novaCapacidade;
             a = novo_array;
         }
     }
     public void reducao_pilha(){
-        if((topoV+1 + capacidade - topoP) <= (capacidade * 0.3)){
-            capacidade = capacidade/2;
-            Object[] novo_array = new Object[capacidade];
-            for(int i = 0; i< novo_array.length; i++){
+        int totalElementos = (topoV + 1) + (capacidade - topoP);
+        if (capacidade > 1 && totalElementos <= (capacidade / 3)) {
+            int novaCapacidade = Math.max(1, capacidade / 2);
+            Object[] novo_array = new Object[novaCapacidade];
+            //copia pilha vermelha
+            for (int i = 0; i <= topoV; i++) {
                 novo_array[i] = a[i];
             }
-            a = novo_array;
+            //copia pilha preta
+            int novoTopoP = novaCapacidade - (capacidade - topoP);
+            for (int i = capacidade - 1; i >= topoP; i--) {
+                novo_array[novoTopoP + (i - topoP)] = a[i];
             }
+            topoP = novoTopoP;
+            capacidade = novaCapacidade;
+            a = novo_array;
+        }
     }
     public Object top_vermelho () throws PilhaVaziaExcecao{
         if(isEmpty()){
@@ -85,4 +94,11 @@ public class Pilha {
         reducao_pilha();
         return r;
     }
+    public Object top_preto() throws PilhaVaziaExcecao {
+        if (topoP == capacidade) {
+            throw new PilhaVaziaExcecao("A pilha preta está vazia");
+        }
+        return a[topoP];
+}
+
 }
