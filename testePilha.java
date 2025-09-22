@@ -1,30 +1,31 @@
-/*
- * Created on 01/09/2004
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 
-/**
- * @author Robinson
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 public class testePilha {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		//Testes pilha vermelha	
 		Integer[] b = new Integer[1];		
 		PilhaArray pp=new PilhaArray(1,0);
-		System.out.println("inserindo");
+		System.out.println("inserindo - Pilha vermelha");
 		for(int f=0;f<10;f++){
 		  System.out.println(f);		  
 		  pp.push(new Integer(f));
 		}
-		System.out.println("retirando");
+		System.out.println("retirando - Pilha vermelha");
 		for(int f=0;f<10;f++){
 			  System.out.print(f);
 			  System.out.println(" - "+pp.pop());
+		}
+
+		//Testes pilha preta
+		System.out.println("inserindo - Pilha preta");
+		for(int f=0;f<10;f++){
+		  System.out.println(f);		  
+		  pp.push_preto(new Integer(f));
+		}
+		System.out.println("retirando - Pilha preta");
+		for(int f=0;f<10;f++){
+			  System.out.print(f);
+			  System.out.println(" - "+pp.pop_preto());
 		}
 	}
 }
